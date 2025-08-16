@@ -1,4 +1,4 @@
-# Haven-API
+# Roofline API
 
 A RESTful API for managing projects, bids, and milestones. Users can register, log in, create projects, bid on projects, and track project milestones.
 
