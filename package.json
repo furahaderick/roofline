@@ -1,0 +1,25 @@
+{
+	"name": "haven-api",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"start": "node --env-file .env src/server.js",
+		"start:dev": "nodemon --env-file .env src/server.js",
+		"test": "NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"description": "",
+	"dependencies": {
+		"bcryptjs": "^3.0.2",
+		"cookie-parser": "^1.4.7",
+		"express": "^5.1.0",
+		"express-async-handler": "^1.2.0",
+		"express-validator": "^7.2.1",
+		"jsonwebtoken": "^9.0.2",
+		"pg": "^8.16.3",
+		"sequelize": "^6.37.7"
+	}
+}
