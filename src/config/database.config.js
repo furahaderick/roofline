@@ -1,15 +1,31 @@
-import { Sequelize } from "sequelize";
+import { DataTypes, Sequelize } from "sequelize";
 
-const sequelize = new Sequelize("haven", "postgres", "4ve5", {
-	host: "localhost",
-	dialect: "postgres",
-});
+import User from "../models/user.model.js";
+
+export const sequelize = new Sequelize(
+	process.env.PG_DB_NAME,
+	process.env.PG_USER,
+	process.env.PG_PWD,
+	{
+		host: "localhost",
+		dialect: "postgres",
+		logging: false,
+	}
+);
 
 export const startDB = async () => {
 	try {
 		await sequelize.authenticate();
 		console.log("Postgres connected successfully.");
+
+		// Automatically create tables
+		await sequelize.sync({ alter: true });
+		// use { force: true } ONLY in dev to drop/recreate tables
 	} catch (err) {
-		console.error("Unable to connect to DB Server:", err);
+		console.error("Unable to connect to DB Server:", err.message);
+		process.exit(1);
 	}
 };
+
+const db = { Sequelize, sequelize, User: User(sequelize, DataTypes) };
+export default db;
