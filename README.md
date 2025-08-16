@@ -193,8 +193,8 @@ Authorization: Bearer <token>
 
 ---
 
-## ER Model Diagram
+## ER Model
 
-![ER Model Placeholder](assets/roofline.ER.drawio.png)
+![ER Model Diagram](assets/roofline.ER.drawio.png)
 
 ---
