@@ -36,3 +36,16 @@ export const validateProjectCreation = [
 		.withMessage("A project description is required"),
 	body("location").exists().withMessage("A project location is required"),
 ];
+
+export const validateBid = [
+	body("price").exists().withMessage("A price is required"),
+	body("estimated_duration")
+		.exists()
+		.withMessage("An estimated duration is required"),
+];
+
+export const validateMilestone = [
+	body("description")
+		.exists()
+		.withMessage("A description message is required"),
+];
