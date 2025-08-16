@@ -1,6 +1,7 @@
 import { DataTypes, Sequelize } from "sequelize";
 
 import User from "../models/user.model.js";
+import Project from "../models/project.model.js";
 
 export const sequelize = new Sequelize(
 	process.env.PG_DB_NAME,
@@ -27,5 +28,24 @@ export const startDB = async () => {
 	}
 };
 
-const db = { Sequelize, sequelize, User: User(sequelize, DataTypes) };
+const db = {
+	Sequelize,
+	sequelize,
+	User: User(sequelize, DataTypes),
+	Project: Project(sequelize, DataTypes),
+};
+
+// Define all associations ie FK-PK relations
+db.User.hasMany(db.Project, {
+	foreignKey: "creatorId",
+	sourceKey: "userId",
+	as: "projects",
+});
+
+db.Project.belongsTo(db.User, {
+	foreignKey: "creatorId",
+	sourceKey: "userId",
+	as: "creator",
+});
+
 export default db;
