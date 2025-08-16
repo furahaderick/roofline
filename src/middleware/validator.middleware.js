@@ -28,3 +28,11 @@ export const validateLogin = [
 		.withMessage("Please enter a valid email address"),
 	body("password").exists().withMessage("Password is required"),
 ];
+
+export const validateProjectCreation = [
+	body("title").exists().withMessage("A project title is required"),
+	body("description")
+		.exists()
+		.withMessage("A project description is required"),
+	body("location").exists().withMessage("A project location is required"),
+];
